@@ -1,0 +1,29 @@
+<h1>Products</h1>
+<p>With price higher than 5$</p>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+    </tr>
+<?php
+$collection = $this->getName();
+
+foreach ($collection as $item) :?>
+    <tr>
+        <td><?=$item['entity_id'];?></td>
+        <td><?=$item['sku'];?></td>
+        <td><?=number_format((float)$item->getPrice(), 2, '.', '') . ' $'?></td>
+        <td>
+            <img
+                src="<?php echo $block->getBaseUrl().'pub/media/catalog/product'.$item['image']?>"
+                alt="<?=$item['name']?>"
+                height=100
+                width=100
+            >
+        </td>
+    </tr>
+<?php endforeach; ?>
+
+</table>
